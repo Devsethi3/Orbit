@@ -1,7 +1,19 @@
-import { MountainIcon } from "lucide-react";
+import { FileIcon, MountainIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import DocumentInput from "./document-input";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
 
 const Navbar = () => {
   return (
@@ -15,6 +27,19 @@ const Navbar = () => {
             {/* Document Input */}
             <DocumentInput />
             {/* MenuBar */}
+            <div className="flex">
+              <Menubar className="border-none bg-transparent shadow-none h-auto p-0">
+                <MenubarMenu>
+                  <MenubarTrigger>File</MenubarTrigger>
+                  <MenubarContent>
+                    <MenubarItem>
+                      <FileIcon className="w-4 h-4 mr-2" />
+                      <span>Save</span>
+                    </MenubarItem>
+                  </MenubarContent>
+                </MenubarMenu>
+              </Menubar>
+            </div>
           </div>
         </div>
       </nav>
