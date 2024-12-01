@@ -10,12 +10,18 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.5.1",
+    "@liveblocks/client": "^2.12.2",
+    "@liveblocks/react": "^2.12.2",
+    "@liveblocks/react-tiptap": "^2.12.2",
+    "@liveblocks/react-ui": "^2.12.2",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-menubar": "^1.1.2",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@tiptap/extension-collaboration": "^2.10.2",
+    "@tiptap/extension-collaboration-cursor": "^2.10.2",
     "@tiptap/extension-color": "^2.10.2",
     "@tiptap/extension-font-family": "^2.10.2",
     "@tiptap/extension-heading": "^2.10.2",
@@ -51,6 +57,7 @@
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "tiptap-extension-resize-image": "^1.2.1",
+    "y-protocols": "^1.0.6",
     "zustand": "^5.0.1"
   },
   "devDependencies": {

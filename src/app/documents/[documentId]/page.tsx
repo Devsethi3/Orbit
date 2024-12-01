@@ -2,6 +2,7 @@ import React from "react";
 import { Editor } from "../_components/editor";
 import Toolbar from "../_components/toolbar";
 import Navbar from "../_components/navbar";
+import { Room } from "../_components/room";
 
 const DocumentIdPage = () => {
   return (
@@ -12,7 +13,9 @@ const DocumentIdPage = () => {
           <Toolbar />
         </div>
         <div className="pt-[114px] print:pt-0">
-          <Editor />
+          <Room>
+            <Editor />
+          </Room>
         </div>
       </div>
     </>

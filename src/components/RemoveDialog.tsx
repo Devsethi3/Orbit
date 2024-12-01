@@ -66,6 +66,6 @@ const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
       </AlertDialog>
     </>
   );
-};
+};  
 
 export default RemoveDialog;
