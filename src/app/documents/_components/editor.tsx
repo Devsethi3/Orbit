@@ -56,7 +56,7 @@ export const Editor = () => {
       attributes: {
         style: "padding-left: 56px; padding-right: 56px;",
         class:
-          "focus:outline-none print:border-0 bg-white border border-[#c7c7c7] flex flex-col min-h-[1054px] w-[816px] pr-14 pt-10 pb-10 cursor-text",
+          "focus:outline-none print:border-0 bg-white border border-[#c7c7c7] flex flex-col min-h-[100vh] w-[816px] pr-14 pt-10 pb-10 cursor-text",
       },
     },
     extensions: [
@@ -93,7 +93,6 @@ export const Editor = () => {
       }),
       TaskList,
     ],
-    content: `<p>Hello</p>`,
   });
 
   return (
