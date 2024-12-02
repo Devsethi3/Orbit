@@ -43,7 +43,7 @@ const InboxMenu = () => {
           <Button variant="ghost" className="relative" size="icon">
             <BellIcon className="size-5" />
             {inboxNotifications.length > 0 && (
-              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-indigo-500 text-xs text-white">
                 {inboxNotifications.length}
               </span>
             )}

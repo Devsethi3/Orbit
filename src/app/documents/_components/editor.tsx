@@ -25,15 +25,26 @@ import { FontSizeExtension } from "@/extensions/font-size";
 import Ruler from "./ruler";
 import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 import { Threads } from "./threads";
+import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/constants/margins";
 
-export const Editor = () => {
-  const leftMargin = useStorage((root) => root.leftMargin);
-  const rightMargin = useStorage((root) => root.rightMargin);
+interface EditorProps {
+  initialContent?: string | undefined;
+}
 
-  const liveblocks = useLiveblocksExtension();
+export const Editor = ({ initialContent }: EditorProps) => {
+  const leftMargin =
+    useStorage((root) => root.leftMargin) ?? LEFT_MARGIN_DEFAULT;
+  const rightMargin =
+    useStorage((root) => root.rightMargin) ?? RIGHT_MARGIN_DEFAULT;
+
+  const liveblocks = useLiveblocksExtension({
+    initialContent,
+    offlineSupport_experimental: true,
+  });
   const { setEditor } = useEditorStore();
 
   const editor = useEditor({
+    autofocus: true,
     immediatelyRender: false,
     onCreate({ editor }) {
       setEditor(editor);
@@ -61,7 +72,7 @@ export const Editor = () => {
     },
     editorProps: {
       attributes: {
-        style: `padding-left: ${leftMargin ?? 56}px; padding-right: ${rightMargin ?? 56}px;`,
+        style: `padding-left: ${leftMargin ?? LEFT_MARGIN_DEFAULT}px; padding-right: ${rightMargin ?? RIGHT_MARGIN_DEFAULT}px;`,
         class:
           "focus:outline-none print:border-0 bg-white border border-[#c7c7c7] flex flex-col min-h-[100vh] w-[816px] pr-14 pt-10 pb-10 cursor-text",
       },
@@ -90,7 +101,6 @@ export const Editor = () => {
       }),
       Underline,
       Image,
-
       FormFamily,
       TextStyle,
       ImageResize,

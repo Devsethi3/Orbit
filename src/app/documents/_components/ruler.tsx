@@ -1,6 +1,7 @@
 import { FaCaretDown } from "react-icons/fa";
 import React, { useRef, useState } from "react";
 import { useMutation, useStorage } from "@liveblocks/react";
+import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/constants/margins";
 
 const markers = Array.from({ length: 83 }, (_, i) => i);
 
@@ -8,12 +9,14 @@ const Ruler = () => {
   const PAGE_WIDTH = 816;
   const MINIMUM_SPACE = 100;
 
-  const leftMargin = useStorage((root) => root.leftMargin) ?? 56;
+  const leftMargin =
+    useStorage((root) => root.leftMargin) ?? LEFT_MARGIN_DEFAULT;
   const setLeftMargin = useMutation(({ storage }, position: number) => {
     storage.set("leftMargin", position);
   }, []);
 
-  const rightMargin = useStorage((root) => root.rightMargin) ?? 56;
+  const rightMargin =
+    useStorage((root) => root.rightMargin) ?? RIGHT_MARGIN_DEFAULT;
   const setRightMargin = useMutation(({ storage }, position: number) => {
     storage.set("rightMargin", position);
   }, []);
@@ -61,10 +64,10 @@ const Ruler = () => {
   };
 
   const handleLeftDoubleClick = () => {
-    setLeftMargin(56);
+    setLeftMargin(LEFT_MARGIN_DEFAULT);
   };
   const handleRightDoubleClick = () => {
-    setRightMargin(56);
+    setRightMargin(RIGHT_MARGIN_DEFAULT);
   };
 
   return (
@@ -74,7 +77,7 @@ const Ruler = () => {
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
-        className="w-[816px] mx-auto h-6 border-b mt-2 border-gray-300 flex items-end relative select-none print:hidden"
+        className="w-[816px] mx-auto h-6 border-b mt-4 border-gray-300 flex items-end relative select-none print:hidden"
       >
         <div id="ruler-container" className="w-full h-full relative">
           <Marker

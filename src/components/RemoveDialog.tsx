@@ -17,6 +17,7 @@ import { api } from "../../convex/_generated/api";
 import { useState } from "react";
 import { Loader2Icon } from "lucide-react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface RemoveDialogProps {
   documentId: Id<"documents">;
@@ -24,6 +25,7 @@ interface RemoveDialogProps {
 }
 
 const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
+  const router = useRouter();
   const remove = useMutation(api.documents.removeById);
   const [isRemoving, setIsRemoving] = useState(false);
   return (
@@ -49,7 +51,10 @@ const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
                 setIsRemoving(true);
                 remove({ id: documentId })
                   .catch(() => toast.error("Something went wrong!"))
-                  .then(() => toast.success("Document deleted!"))
+                  .then(() => {
+                    toast.success("Document deleted!");
+                    router.push("/dashboard");
+                  })
                   .finally(() => {
                     setIsRemoving(false);
                   });
@@ -66,6 +71,6 @@ const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
       </AlertDialog>
     </>
   );
-};  
+};
 
 export default RemoveDialog;

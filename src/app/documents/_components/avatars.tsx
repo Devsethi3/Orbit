@@ -8,7 +8,24 @@ const AVATAR_SIZE = 36;
 
 export const Avatars = () => {
   return (
-    <ClientSideSuspense fallback={null}>
+    <ClientSideSuspense
+      fallback={
+        <div className="flex items-center">
+          <div className="flex mr-4">
+            <div className="flex">
+              {[1, 2].map((i) => (
+                <div
+                  key={i}
+                  style={{ width: AVATAR_SIZE, height: AVATAR_SIZE }}
+                  className="animate-pulse -ml-2 flex shrink-0 place-content-center relative border-4 border-white rounded-full bg-gray-200"
+                />
+              ))}
+            </div>
+          </div>
+          <Separator orientation="vertical" className="h-6" />
+        </div>
+      }
+    >
       <AvatarStack />
     </ClientSideSuspense>
   );
@@ -17,8 +34,6 @@ export const Avatars = () => {
 const AvatarStack = () => {
   const users = useOthers();
   const currentUser = useSelf();
-
-  console.log("currentUser", currentUser);
 
   return (
     <>

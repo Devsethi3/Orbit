@@ -1,11 +1,11 @@
 "use client";
 
 import { Editor } from "../_components/editor";
-import Toolbar from "../_components/toolbar";
 import Navbar from "../_components/navbar";
 import { Room } from "../_components/room";
 import { Preloaded, usePreloadedQuery } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
+import Toolbar from "./toolbar";
 
 interface DocumentProps {
   preloadedDocument: Preloaded<typeof api.documents.getById>;
@@ -23,7 +23,7 @@ export const Document = ({ preloadedDocument }: DocumentProps) => {
             <Toolbar />
           </div>
           <div className="pt-[114px] print:pt-0">
-            <Editor />
+            <Editor initialContent={document.initialContent} />
           </div>
         </div>
       </Room>
