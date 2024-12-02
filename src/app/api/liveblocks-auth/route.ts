@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
     userInfo: {
       name:
         user.fullName ?? user.primaryEmailAddress?.emailAddress ?? "Anonymous",
-      avatarUrl: user.imageUrl,
+      avatar: user.imageUrl,
     },
   });
 

@@ -18,6 +18,7 @@ import { Color } from "@tiptap/extension-color";
 import Highlight from "@tiptap/extension-highlight";
 import Link from "@tiptap/extension-link";
 import TextAlign from "@tiptap/extension-text-align";
+import { useStorage } from "@liveblocks/react";
 
 import { LineHeight } from "@/extensions/line-height";
 import { FontSizeExtension } from "@/extensions/font-size";
@@ -26,6 +27,9 @@ import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 import { Threads } from "./threads";
 
 export const Editor = () => {
+  const leftMargin = useStorage((root) => root.leftMargin);
+  const rightMargin = useStorage((root) => root.rightMargin);
+
   const liveblocks = useLiveblocksExtension();
   const { setEditor } = useEditorStore();
 
@@ -57,7 +61,7 @@ export const Editor = () => {
     },
     editorProps: {
       attributes: {
-        style: "padding-left: 56px; padding-right: 56px;",
+        style: `padding-left: ${leftMargin ?? 56}px; padding-right: ${rightMargin ?? 56}px;`,
         class:
           "focus:outline-none print:border-0 bg-white border border-[#c7c7c7] flex flex-col min-h-[100vh] w-[816px] pr-14 pt-10 pb-10 cursor-text",
       },

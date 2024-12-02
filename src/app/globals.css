@@ -6,6 +6,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -247,7 +251,6 @@ body {
   }
 }
 
-
 /* Liveblocks */
 
 /* For mobile */
@@ -272,4 +275,8 @@ body {
   .anchored-threads {
     display: none;
   }
+}
+
+div[data-radix-popper-content-wrapper] {
+  z-index: 50 !important;
 }
