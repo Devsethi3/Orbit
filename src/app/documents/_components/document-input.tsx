@@ -93,7 +93,7 @@ const DocumentInput = ({ title, id }: DocumentInputProps) => {
             {title ? title : "Untitled Document"}
           </span>
         )}
-        {isError && <BsCloudSlash className="w-4 h-4 text-red-500" />}
+        {isError && <BsCloudSlash className="w-4 h-4" />}
         {!showError && !showLoader && <BsCloudCheck className="w-4 h-4" />}
         {showLoader && (
           <LoaderIcon className="w-4 h-4 text-muted-foreground animate-spin" />
