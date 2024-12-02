@@ -29,7 +29,7 @@ export function ConvexClientProvider({
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!}
     >
       <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
-        <Authenticated>{children}</Authenticated>
+        {/* <Authenticated>{children}</Authenticated>
         <Unauthenticated>
           <div className="flex flex-col items-center justify-center h-screen w-full">
             <SignIn routing="hash" />
@@ -37,8 +37,8 @@ export function ConvexClientProvider({
         </Unauthenticated>
         <AuthLoading>
           <FullScreenLoader />
-        </AuthLoading>
-        {/* {!isMounted || (isMounted && window.location.pathname === "/") ? (
+        </AuthLoading> */}
+        {!isMounted || (isMounted && window.location.pathname === "/") ? (
           children
         ) : (
           <>
@@ -52,7 +52,7 @@ export function ConvexClientProvider({
               <FullScreenLoader />
             </AuthLoading>
           </>
-        )} */}
+        )}
       </ConvexProviderWithClerk>
     </ClerkProvider>
   );

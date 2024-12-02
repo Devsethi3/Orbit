@@ -41,8 +41,13 @@ import { useEditorStore } from "@/store/use-editor-store";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { Avatars } from "./avatars";
 import Inbox from "./inbox";
+import { Doc } from "../../../../convex/_generated/dataModel";
 
-const Navbar = () => {
+interface NavbarProps {
+  data: Doc<"documents">;
+}
+
+const Navbar = ({ data }: NavbarProps) => {
   const { editor } = useEditorStore();
 
   const insertTable = ({ rows, cols }: { rows: number; cols: number }) => {
@@ -68,7 +73,7 @@ const Navbar = () => {
     const blob = new Blob([JSON.stringify(content)], {
       type: "application/json",
     });
-    onDownload(blob, "document.json"); // TODO: change to document name
+    onDownload(blob, `${data.title}.json`);
   };
 
   const onSaveHTMl = () => {
@@ -76,7 +81,7 @@ const Navbar = () => {
 
     const content = editor.getHTML();
     const blob = new Blob([content], { type: "text/html" });
-    onDownload(blob, "document.html"); // TODO: change to document name
+    onDownload(blob, `${data.title}.html`);
   };
 
   const onSaveText = () => {
@@ -84,19 +89,18 @@ const Navbar = () => {
 
     const content = editor.getText();
     const blob = new Blob([content], { type: "text/plain" });
-    onDownload(blob, "document.txt"); // TODO: change to document name
+    onDownload(blob, `${data.title}.txt`);
   };
 
   return (
     <>
       <nav className="flex items-center justify-between">
         <div className="flex gap-2 items-center">
-          <Link href="/">
+          <Link href="/dashboard">
             <Image src="/logo.svg" width={50} height={50} alt="logo" />
           </Link>
           <div className="flex flex-col">
-            {/* Document Input */}
-            <DocumentInput />
+            <DocumentInput title={data.title} id={data._id} />
             {/* MenuBar */}
             <div className="flex">
               <Menubar className="border-none bg-transparent shadow-none h-auto p-0">
