@@ -64,7 +64,7 @@ const HeroSection = () => {
                             <Link href="/dashboard">
                                 <Button>Get Started</Button>
                             </Link>
-                            <Link href="https://github.com/DevSethi3">
+                            <Link href="https://github.com/DevSethi3" target='_blank'>
                                 <Button variant="outline">
                                     <FaGithub />
                                     Who made this?</Button>
