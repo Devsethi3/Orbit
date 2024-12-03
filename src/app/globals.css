@@ -57,13 +57,12 @@ body {
     --muted-foreground: 240 39% 65%;
     --accent: 240 23% 25%; /* Slightly lighter accent */
     --accent-foreground: 240 63% 75%;
-    --destructive: 350 83% 47%; /* Slightly muted red */
+    --destructive: 350 83% 47%; 
     --destructive-foreground: 230 252% 98%;
     --border: 240 23% 25%;
     --input: 240 23% 25%;
     --ring: 240 63% 75%;
     
-    /* Dark mode chart colors */
     --chart-1: 250 69% 55%; 
     --chart-2: 220 63% 45%; 
     --chart-3: 240 53% 35%; 
