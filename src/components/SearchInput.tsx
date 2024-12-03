@@ -6,7 +6,12 @@ import { Search, XIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { useSearchParam } from "@/hooks/use-search-param";
 
-const SearchInput = () => {
+interface SearchInputProps {
+  isMobile?: boolean;
+  onClose?: () => void;
+}
+
+const SearchInput = ({ isMobile, onClose }: SearchInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
   const [search, setSearch] = useSearchParam();
@@ -19,6 +24,9 @@ const SearchInput = () => {
     setValue("");
     inputRef.current?.blur();
     setSearch("");
+    if (isMobile && onClose) {
+      onClose();
+    }
   };
 
   useEffect(() => {
@@ -37,11 +45,14 @@ const SearchInput = () => {
     e.preventDefault();
     setSearch(value);
     inputRef.current?.blur();
+    if (isMobile && onClose) {
+      onClose();
+    }
   };
 
   return (
-    <div className="flex-1 flex items-center justify-center">
-      <form className="relative max-w-[620px] w-full" onSubmit={handleSubmit}>
+    <div className={`flex items-center justify-center ${!isMobile ? 'flex-1 max-w-[500px] mx-auto' : ''}`}>
+      <form className="relative w-full" onSubmit={handleSubmit}>
         <Input
           value={value}
           onChange={handleChange}
