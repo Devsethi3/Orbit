@@ -55,7 +55,7 @@ body {
     --secondary-foreground: 240 63% 75%;
     --muted: 240 23% 20%; 
     --muted-foreground: 240 39% 65%;
-    --accent: 240 23% 25%; /* Slightly lighter accent */
+    --accent: 240 23% 25%;
     --accent-foreground: 240 63% 75%;
     --destructive: 350 83% 47%; 
     --destructive-foreground: 230 252% 98%;
