@@ -48,7 +48,6 @@ const AvatarStack = () => {
         )}
         <div className="flex">
           {users.map(({ connectionId, info }) => {
-            console.log(info);
 
             return (
               <Avatar key={connectionId} src={info.avatar} name={info.name} />

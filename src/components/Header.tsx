@@ -22,8 +22,18 @@ const Header = () => {
               afterLeaveOrganizationUrl="/dashboard"
               afterSelectOrganizationUrl="/dashboard"
               afterSelectPersonalUrl="/dashboard"
+              appearance={{
+                elements: {
+                  organizationSwitcherPopoverFooter: "hidden"
+                }
+              }}
             />
-            <UserButton afterSignOutUrl="/" />
+            <UserButton appearance={{
+              elements: {
+                userButtonAvatarBox: "w-8 h-8",
+                userButtonPopoverFooter: "hidden"
+              }
+            }} afterSignOutUrl="/" />
           </div>
         </div>
       </nav>

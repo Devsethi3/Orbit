@@ -4,61 +4,18 @@ import { BsLightningChargeFill } from "react-icons/bs";
 import { AiOutlineSecurityScan } from "react-icons/ai";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import CanvasCursor from "@/components/CanvasCursor";
+import HeroNav from "@/components/HeroNav";
+import HeroSection from "@/components/HeroSection";
 
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navbar */}
-      <nav className="bg-white shadow-sm px-6 py-4 fixed w-full top-0 z-50">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <FaGoogle className="text-2xl text-blue-500" />
-            <h1 className="text-xl font-semibold text-gray-800">Docs</h1>
-          </div>
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-gray-600 hover:text-gray-900">
-              Features
-            </a>
-            <a href="#pricing" className="text-gray-600 hover:text-gray-900">
-              Pricing
-            </a>
-            <a href="#about" className="text-gray-600 hover:text-gray-900">
-              About
-            </a>
-            <button className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-colors">
-              Get Started
-            </button>
-            <Link href="/sign-in">
-              <Button variant="outline">Sign In</Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <HeroNav />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Create, Edit, Collaborate
-            <br />
-            <span className="text-blue-500">All in One Place</span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-            Experience seamless document creation and real-time collaboration
-            with our powerful document management solution.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/dashboard">
-              <button className="bg-blue-500 text-white px-8 py-3 rounded-full hover:bg-blue-600 transition-colors text-lg">
-                Try it Free
-              </button>
-            </Link>
-            <button className="bg-white text-gray-800 px-8 py-3 rounded-full hover:bg-gray-100 transition-colors text-lg border">
-              Watch Demo
-            </button>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Features Section */}
       <section className="py-20 bg-white px-6">

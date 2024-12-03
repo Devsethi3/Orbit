@@ -28,6 +28,34 @@ const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
   const router = useRouter();
   const remove = useMutation(api.documents.removeById);
   const [isRemoving, setIsRemoving] = useState(false);
+
+  const handleDelete = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsRemoving(true);
+
+    if (!documentId) {
+      toast.error("Invalid document ID!");
+      setIsRemoving(false);
+      return;
+    }
+
+    try {
+      await remove({ id: documentId });
+      toast.success("Document deleted!");
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 100);
+    } catch (error: any) {
+      if (error?.message?.includes("Document not found")) {
+        toast.error("Document not found. It may have already been deleted.");
+      } else {
+        toast.error("Something went wrong!");
+      }
+    } finally {
+      setIsRemoving(false);
+    }
+  };
+
   return (
     <>
       <AlertDialog>
@@ -46,19 +74,7 @@ const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
             </AlertDialogCancel>
             <AlertDialogAction
               disabled={isRemoving}
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsRemoving(true);
-                remove({ id: documentId })
-                  .catch(() => toast.error("Something went wrong!"))
-                  .then(() => {
-                    toast.success("Document deleted!");
-                    router.push("/dashboard");
-                  })
-                  .finally(() => {
-                    setIsRemoving(false);
-                  });
-              }}
+              onClick={handleDelete}
             >
               {isRemoving ? (
                 <Loader2Icon className="size-4 animate-spin" />

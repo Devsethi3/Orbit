@@ -7,9 +7,11 @@ import React from "react";
 import { api } from "../../../../convex/_generated/api";
 import DocumentsTable from "@/app/documents/_components/documents-table";
 import { useSearchParam } from "@/hooks/use-search-param";
-import {  Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import { useUser } from "@clerk/nextjs";
 
 const HomePage = () => {
+  const { user } = useUser();
   const [search] = useSearchParam();
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -27,7 +29,17 @@ const HomePage = () => {
     <>
       <div className="min-h-screen flex flex-col">
         <Header />
-        <div className="mt-16">
+        <div className="max-w-6xl mx-auto w-full px-6 mt-16">
+          <div className="my-8">
+            <h1 className="text-3xl font-bold">
+              Hi, {user?.firstName || 'there'} 👋
+            </h1>
+            <p className="text-muted-foreground mt-2">
+              Create your first collaborative document with Orbit and experience seamless teamwork.
+            </p>
+          </div>
+        </div>
+        <div>
           <TemplatesGallery />
           {isLoading ? (
             <div className="flex items-center justify-center py-10">
