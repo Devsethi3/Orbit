@@ -21,7 +21,7 @@ const HeroSection = () => {
                     <div className="flex flex-col items-center text-center">
 
 
-                        <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600">
+                        <h1 className="text-6xl md:text-7xl font-bold mb-6 text-primary">
                             Orbit Docs
                         </h1>
 
