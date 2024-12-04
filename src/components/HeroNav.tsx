@@ -14,7 +14,7 @@ const HeroNav = () => {
     const { isSignedIn, isLoaded } = useAuth();
     const { user, isLoaded: isUserLoaded } = useUser();
 
-    // Handle navbar background
+    // Handle navbar
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
