@@ -14,7 +14,6 @@ const HeroNav = () => {
     const { isSignedIn, isLoaded } = useAuth();
     const { user, isLoaded: isUserLoaded } = useUser();
 
-    //
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
