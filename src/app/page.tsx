@@ -18,7 +18,7 @@ const HomePage = () => {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Features */}
+      {/* */}
       <Features />
     </div>
   );
