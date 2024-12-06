@@ -36,7 +36,7 @@ const HeroNav = () => {
                             </span>
                         </Link>
 
-                        {/* Navigation */}
+                        {/* */}
                         <div className="hidden md:flex items-center space-x-8">
                             <Link href="/docs" className="text-slate-600 hover:text-indigo-600 transition-colors">
                                 Docs
