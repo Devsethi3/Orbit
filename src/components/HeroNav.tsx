@@ -28,7 +28,7 @@ const HeroNav = () => {
                 }`}>
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="flex items-center justify-between h-16">
-                        {/* Logo and */}
+                        {/* Logo */}
                         <Link href="/" className="flex items-center space-x-3 group">
                             <Image src="/logo.svg" width={30} height={30} alt="logo" />
                             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-600">
