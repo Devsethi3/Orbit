@@ -24,7 +24,6 @@ const HeroSection = () => {
                             Orbit Docs
                         </h1>
 
-                        {/* */}
                         <div className="flex flex-col items-center gap-4 mb-10">
                             <p className="xl:text-xl lg:text-lg text-slate-600 max-w-2xl">
                                 Comprehensive documentation and guides for building amazing products with Orbit.
