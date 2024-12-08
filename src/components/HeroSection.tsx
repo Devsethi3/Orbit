@@ -69,7 +69,7 @@ const HeroSection = () => {
                             </Link>
                         </div>
 
-                        {/* Demo Video */}
+                        {/* Demo */}
                         <div className="w-full max-w-7xl mb-10">
                             <div className="relative group">
                                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg blur group-hover:blur-md transition-all"></div>
