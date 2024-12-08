@@ -87,7 +87,7 @@ const HeroSection = () => {
                             </div>
                         </div>
 
-                        {/* CTA Buttons with hover effects */}
+                        {/* CTA Buttons with hover */}
 
                     </div>
                 </div>
