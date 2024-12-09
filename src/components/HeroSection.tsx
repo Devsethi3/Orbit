@@ -87,7 +87,7 @@ const HeroSection = () => {
                             </div>
                         </div>
 
-                        {/* CTA */}
+                        {/* */}
 
                     </div>
                 </div>
