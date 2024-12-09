@@ -53,7 +53,7 @@ const HeroNav = () => {
 
                         <div className="flex items-center gap-5">
                             {!isLoaded ? (
-                                // Loading state
+                                // Loading
                                 <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
                             ) : isSignedIn ? (
                                 // Signed in state
