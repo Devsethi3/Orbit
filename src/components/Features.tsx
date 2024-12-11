@@ -73,7 +73,6 @@ const Features = () => {
                 </p>
               </div>
 
-              {/* */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-600 to-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
             </motion.div>
           ))}
