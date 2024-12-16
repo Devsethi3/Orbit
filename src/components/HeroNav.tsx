@@ -55,7 +55,7 @@ const HeroNav = () => {
                             {!isLoaded ? (
                                 <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
                             ) : isSignedIn ? (
-                                // SignIn
+                                //
                                 <>
                                     <Link href="/dashboard">
                                         <Button variant="secondary">Dashboard</Button>
