@@ -73,7 +73,6 @@ const HeroNav = () => {
                                     )}
                                 </>
                             ) : (
-                                //
                                 <div className="flex items-center space-x-4">
                                     <Link href="/sign-in">
                                         <Button variant="outline">Sign In</Button>
