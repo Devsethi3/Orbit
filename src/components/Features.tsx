@@ -13,7 +13,7 @@ const featuresList = [
   {
     icon: <FaUsers className="w-6 h-6" />,
     title: 'Collaborative Editing',
-    description: 'Work together seamlessly with multiple users editing the same.',
+    description: 'Work together seamlessly with multiple users editing the.',
   },
   {
     icon: <FaBuilding className="w-6 h-6" />,
