@@ -167,3 +167,84 @@ export const getById = query({
     return document;
   },
 });
+
+export const shareDocument = mutation({
+  args: {
+    documentId: v.id("documents"),
+    userId: v.string(),
+    accessLevel: v.union(v.literal("view"), v.literal("edit")),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new ConvexError("Unauthorized");
+
+    const document = await ctx.db.get(args.documentId);
+    if (!document) throw new ConvexError("Document not found");
+
+    if (document.ownerId !== identity.subject) {
+      throw new ConvexError("Only the owner can share this document");
+    }
+
+    const existingShares = document.sharedWith || [];
+    const updatedShares = [
+      ...existingShares.filter((share) => share.userId !== args.userId),
+      { userId: args.userId, accessLevel: args.accessLevel },
+    ];
+
+    await ctx.db.patch(args.documentId, {
+      sharedWith: updatedShares,
+    });
+
+    return { success: true };
+  },
+});
+
+export const createPublicLink = mutation({
+  args: {
+    documentId: v.id("documents"),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new ConvexError("Unauthorized");
+
+    const document = await ctx.db.get(args.documentId);
+    if (!document) throw new ConvexError("Document not found");
+
+    if (document.ownerId !== identity.subject) {
+      throw new ConvexError("Only the owner can create public links");
+    }
+
+    const publicAccessToken = `${args.documentId}_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+
+    await ctx.db.patch(args.documentId, {
+      isPublic: true,
+      publicAccessToken,
+    });
+
+    return { publicAccessToken };
+  },
+});
+
+export const getPublicDocument = query({
+  args: {
+    accessToken: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const [documentId] = args.accessToken.split("_");
+
+    const document = await ctx.db
+      .query("documents")
+      .filter((q) => q.eq(q.field("publicAccessToken"), args.accessToken))
+      .first();
+
+    if (!document || !document.isPublic) {
+      return null;
+    }
+
+    return {
+      id: document._id,
+      title: document.title,
+      content: document.initialContent,
+    };
+  },
+});

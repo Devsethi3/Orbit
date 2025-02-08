@@ -20,13 +20,23 @@ type UserInfo = {
   color: string;
 };
 
-export function Room({ children }: { children: ReactNode }) {
-  const params = useParams();
+interface RoomProps {
+  children: ReactNode;
+  isPublic?: boolean;
+}
 
+export function Room({ children, isPublic = false }: RoomProps) {
+  const params = useParams();
   const [users, setUsers] = useState<UserInfo[]>([]);
+
+  const roomId = isPublic
+    ? (params.accessToken as string)
+    : (params.documentId as string);
 
   const fetchUsers = useMemo(
     () => async () => {
+      if (isPublic) return; // Skip fetching users for public access
+
       try {
         const list = await getUser();
         setUsers(list);
@@ -34,55 +44,79 @@ export function Room({ children }: { children: ReactNode }) {
         toast.error("Failed to fetch users");
       }
     },
-    []
+    [isPublic]
   );
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [fetchUsers]);
 
   return (
     <LiveblocksProvider
       throttle={16}
       authEndpoint={async () => {
-        const endpoint = "/api/liveblocks-auth";
-        const room = params.documentId as string;
+        // For public access, use a simplified auth endpoint
+        if (isPublic) {
+          const endpoint = "/api/liveblocks-public-auth";
+          const response = await fetch(endpoint, {
+            method: "POST",
+            body: JSON.stringify({ room: roomId }),
+          });
+          return response.json();
+        }
 
+        // Regular auth flow
+        const endpoint = "/api/liveblocks-auth";
         const response = await fetch(endpoint, {
           method: "POST",
-          body: JSON.stringify({ room }),
+          body: JSON.stringify({ room: roomId }),
         });
-
         return response.json();
       }}
-      resolveUsers={({ userIds }) => {
-        return userIds.map(
-          (userId) => users.find((user) => user.id === userId) ?? undefined
-        );
-      }}
-      resolveMentionSuggestions={({ text }) => {
-        let filterUsers = users;
-        if (text) {
-          filterUsers = users.filter((user) =>
-            user.name.toLowerCase().includes(text.toLowerCase())
-          );
-        }
-        return filterUsers.map((user) => user.id);
-      }}
-      resolveRoomsInfo={async ({ roomIds }) => {
-        const documents = await getDocuments(roomIds as Id<"documents">[]);
-        return documents.map((document) => ({
-          id: document.id,
-          name: document.name,
-        }));
-      }}
+      resolveUsers={
+        isPublic
+          ? undefined
+          : ({ userIds }) => {
+              return userIds.map(
+                (userId) =>
+                  users.find((user) => user.id === userId) ?? undefined
+              );
+            }
+      }
+      resolveMentionSuggestions={
+        isPublic
+          ? undefined
+          : ({ text }) => {
+              let filterUsers = users;
+              if (text) {
+                filterUsers = users.filter((user) =>
+                  user.name.toLowerCase().includes(text.toLowerCase())
+                );
+              }
+              return filterUsers.map((user) => user.id);
+            }
+      }
+      resolveRoomsInfo={
+        isPublic
+          ? undefined
+          : async ({ roomIds }) => {
+              const documents = await getDocuments(
+                roomIds as Id<"documents">[]
+              );
+              return documents.map((document) => ({
+                id: document.id,
+                name: document.name,
+              }));
+            }
+      }
     >
       <RoomProvider
-        id={params.documentId as string}
+        id={roomId}
         initialStorage={{
           leftMargin: LEFT_MARGIN_DEFAULT,
           rightMargin: RIGHT_MARGIN_DEFAULT,
         }}
+        initialPresence={isPublic ? {} : undefined}
       >
         <ClientSideSuspense fallback={<FullScreenLoader />}>
           {children}

@@ -29,9 +29,10 @@ import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/constants/margins";
 
 interface EditorProps {
   initialContent?: string | undefined;
+  editable?: boolean;
 }
 
-export const Editor = ({ initialContent }: EditorProps) => {
+export const Editor = ({ initialContent, editable = true }: EditorProps) => {
   const leftMargin =
     useStorage((root) => root.leftMargin) ?? LEFT_MARGIN_DEFAULT;
   const rightMargin =
@@ -44,7 +45,8 @@ export const Editor = ({ initialContent }: EditorProps) => {
   const { setEditor } = useEditorStore();
 
   const editor = useEditor({
-    autofocus: true,
+    editable,
+    autofocus: editable,
     immediatelyRender: false,
     onCreate({ editor }) {
       setEditor(editor);
