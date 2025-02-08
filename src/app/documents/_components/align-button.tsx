@@ -10,9 +10,7 @@ import {
   AlignJustifyIcon,
   AlignLeftIcon,
   AlignRightIcon,
-  HighlighterIcon,
 } from "lucide-react";
-import { type ColorResult, CirclePicker, SketchPicker } from "react-color";
 
 const AlignButton = () => {
   const { editor } = useEditorStore();
