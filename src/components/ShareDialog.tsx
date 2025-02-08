@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -26,13 +26,31 @@ export const ShareDialog = ({
   onClose,
   documentId,
 }: ShareDialogProps) => {
-  const [emailInput, setEmailInput] = useState("");
-  const [publicLink, setPublicLink] = useState("");
+  const [emailInput, setEmailInput] = useState(() => {
+    return localStorage.getItem("emailInput") || "";
+  });
+
+  const [publicLink, setPublicLink] = useState(() => {
+    return localStorage.getItem(`publicLink-${documentId}`) || "";
+  });
+
   const [copied, setCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const shareDocument = useMutation(api.documents.shareDocument);
   const createPublicLink = useMutation(api.documents.createPublicLink);
+
+  // Save email input to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("emailInput", emailInput);
+  }, [emailInput]);
+
+  // Save public link to localStorage whenever it changes
+  useEffect(() => {
+    if (publicLink) {
+      localStorage.setItem(`publicLink-${documentId}`, publicLink);
+    }
+  }, [publicLink, documentId]);
 
   const handleShare = async (accessLevel: "view" | "edit") => {
     if (!emailInput) {
