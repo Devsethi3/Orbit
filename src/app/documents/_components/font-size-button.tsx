@@ -1,4 +1,3 @@
-import { Input } from "@/components/ui/input";
 import { useEditorStore } from "@/store/use-editor-store";
 import { MinusIcon, PlusIcon } from "lucide-react";
 import React, { useState } from "react";

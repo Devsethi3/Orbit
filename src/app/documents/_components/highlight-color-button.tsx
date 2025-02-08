@@ -5,7 +5,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useEditorStore } from "@/store/use-editor-store";
 import { HighlighterIcon } from "lucide-react";
-import { type ColorResult, CirclePicker, SketchPicker } from "react-color";
+import { type ColorResult, SketchPicker } from "react-color";
 
 const HighlightColorButton = () => {
   const { editor } = useEditorStore();
