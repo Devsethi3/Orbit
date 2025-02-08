@@ -1,5 +1,5 @@
 import { useEditorStore } from "@/store/use-editor-store";
-import React, { useState, ChangeEvent } from "react";
+import React, { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,7 +14,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogFooter,
-  DialogTrigger,
   DialogTitle,
 } from "@/components/ui/dialog";
 
