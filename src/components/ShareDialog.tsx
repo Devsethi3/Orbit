@@ -164,7 +164,7 @@ export const ShareDialog = ({
                 disabled={isLoading}
                 className="w-full"
               >
-                Create Public Link
+                Create Public Link 
               </Button>
             )}
           </div>
