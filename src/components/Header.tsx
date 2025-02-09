@@ -4,7 +4,6 @@ import Image from "next/image";
 import SearchInput from "./SearchInput";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { Search } from "lucide-react";
-import { Button } from "./ui/button";
 
 const Header = () => {
   const [showMobileSearch, setShowMobileSearch] = React.useState(false);

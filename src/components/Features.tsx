@@ -1,6 +1,5 @@
 "use client"
-import React from 'react';
-import { FaCloud, FaLock, FaBolt, FaUsers, FaBuilding, FaHistory } from 'react-icons/fa';
+import { FaBolt, FaUsers, FaBuilding, FaHistory } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const featuresList = [

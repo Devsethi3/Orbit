@@ -33,7 +33,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
-import { useMutation, usePreloadedQuery } from "convex/react";
+import { useMutation } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
 import { useState } from "react";
 import { ShareDialog } from "@/components/ShareDialog";
@@ -81,7 +81,6 @@ interface ToolbarProps {
 const Toolbar = ({ data }: ToolbarProps) => {
   const { editor } = useEditorStore();
   const [showShareDialog, setShowShareDialog] = useState(false);
-  const shareDocument = useMutation(api.documents.shareDocument);
 
   const sections: {
     label: string;

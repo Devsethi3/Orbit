@@ -9,7 +9,6 @@ import {
   FileTextIcon,
   GlobeIcon,
   ItalicIcon,
-  MountainIcon,
   PrinterIcon,
   Redo2Icon,
   RemoveFormattingIcon,

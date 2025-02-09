@@ -42,6 +42,7 @@ export function Room({ children, isPublic = false }: RoomProps) {
         setUsers(list);
       } catch (error) {
         toast.error("Failed to fetch users");
+        console.log(error);
       }
     },
     [isPublic]

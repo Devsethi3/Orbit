@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 interface WaveGeneratorConfig {
   phase?: number;
@@ -58,7 +58,11 @@ class Line {
   private friction: number;
   nodes: NodeType[];
 
-  constructor(config: LineConfig = {}, E: CanvasConfig, pos: { x: number; y: number }) {
+  constructor(
+    config: LineConfig = {},
+    E: CanvasConfig,
+    pos: { x: number; y: number }
+  ) {
     this.spring = (config.spring || 0) + 0.1 * Math.random() - 0.02;
     this.friction = E.friction + 0.01 * Math.random() - 0.002;
     this.nodes = [];
@@ -68,7 +72,7 @@ class Line {
         x: pos.x,
         y: pos.y,
         vx: 0,
-        vy: 0
+        vy: 0,
       };
       this.nodes.push(node);
     }
@@ -139,7 +143,7 @@ const useCanvasCursor = (): void => {
 
   const onMousemove = (e: MouseEvent | TouchEvent): void => {
     const handleMouseMove = (event: MouseEvent | TouchEvent): void => {
-      if ('touches' in event) {
+      if ("touches" in event) {
         pos.x = event.touches[0].pageX;
         pos.y = event.touches[0].pageY;
       } else {
@@ -159,16 +163,18 @@ const useCanvasCursor = (): void => {
     const resetLines = (): void => {
       linesRef.current = [];
       for (let e = 0; e < E.trails; e++) {
-        linesRef.current.push(new Line({ spring: 0.4 + (e / E.trails) * 0.025 }, E, pos));
+        linesRef.current.push(
+          new Line({ spring: 0.4 + (e / E.trails) * 0.025 }, E, pos)
+        );
       }
     };
 
-    document.removeEventListener('mousemove', onMousemove);
-    document.removeEventListener('touchstart', onMousemove);
+    document.removeEventListener("mousemove", onMousemove);
+    document.removeEventListener("touchstart", onMousemove);
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('touchmove', handleMouseMove);
-    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("touchmove", handleMouseMove);
+    document.addEventListener("touchstart", handleTouchStart);
 
     handleMouseMove(e);
     resetLines();
@@ -187,9 +193,9 @@ const useCanvasCursor = (): void => {
     if (!ctx || !ctx.canvas) return;
 
     if (ctx.running) {
-      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalCompositeOperation = "source-over";
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-      ctx.globalCompositeOperation = 'lighter';
+      ctx.globalCompositeOperation = "lighter";
       ctx.strokeStyle = `hsla(${Math.round(f.update())},50%,50%,0.2)`;
       ctx.lineWidth = 1;
 
@@ -213,17 +219,17 @@ const useCanvasCursor = (): void => {
   };
 
   useEffect(() => {
-    const canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    ctxRef.current = canvas.getContext('2d') as CanvasRenderingContext2D;
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+    ctxRef.current = canvas.getContext("2d") as CanvasRenderingContext2D;
     const ctx = ctxRef.current;
 
     ctx.running = true;
     ctx.frame = 1;
 
-    document.addEventListener('mousemove', onMousemove);
-    document.addEventListener('touchstart', onMousemove);
-    document.body.addEventListener('orientationchange', resizeCanvas);
-    window.addEventListener('resize', resizeCanvas);
+    document.addEventListener("mousemove", onMousemove);
+    document.addEventListener("touchstart", onMousemove);
+    document.body.addEventListener("orientationchange", resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
 
     const handleFocus = (): void => {
       if (!ctx.running) {
@@ -236,19 +242,19 @@ const useCanvasCursor = (): void => {
       ctx.running = false;
     };
 
-    window.addEventListener('focus', handleFocus);
-    window.addEventListener('blur', handleBlur);
+    window.addEventListener("focus", handleFocus);
+    window.addEventListener("blur", handleBlur);
 
     resizeCanvas();
 
     return () => {
       ctx.running = false;
-      document.removeEventListener('mousemove', onMousemove);
-      document.removeEventListener('touchstart', onMousemove);
-      document.body.removeEventListener('orientationchange', resizeCanvas);
-      window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('focus', handleFocus);
-      window.removeEventListener('blur', handleBlur);
+      document.removeEventListener("mousemove", onMousemove);
+      document.removeEventListener("touchstart", onMousemove);
+      document.body.removeEventListener("orientationchange", resizeCanvas);
+      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("focus", handleFocus);
+      window.removeEventListener("blur", handleBlur);
     };
   }, []);
 };

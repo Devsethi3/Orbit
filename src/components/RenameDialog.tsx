@@ -43,7 +43,7 @@ const RenameDialog = ({
       toast.success("Document renamed!");
       setOpen(false);
     } catch (error) {
-      toast.error("Something went wrong!");
+      toast.error(`Something went wrong! ${error}`);
     } finally {
       setIsUpdating(false);
     }

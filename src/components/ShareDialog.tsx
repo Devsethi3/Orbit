@@ -69,6 +69,7 @@ export const ShareDialog = ({
       setEmailInput("");
     } catch (error) {
       toast.error("Failed to share document");
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -83,6 +84,7 @@ export const ShareDialog = ({
       toast.success("Public link created successfully");
     } catch (error) {
       toast.error("Failed to create public link");
+      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -95,6 +97,7 @@ export const ShareDialog = ({
       setTimeout(() => setCopied(false), 2000);
       toast.success("Link copied to clipboard");
     } catch (error) {
+      console.log(error);
       toast.error("Failed to copy link");
     }
   };
@@ -164,7 +167,7 @@ export const ShareDialog = ({
                 disabled={isLoading}
                 className="w-full"
               >
-                Create Public Link 
+                Create Public Link
               </Button>
             )}
           </div>

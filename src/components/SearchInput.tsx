@@ -14,7 +14,7 @@ interface SearchInputProps {
 const SearchInput = ({ isMobile, onClose }: SearchInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
-  const [search, setSearch] = useSearchParam();
+  const [, setSearch] = useSearchParam();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -51,7 +51,9 @@ const SearchInput = ({ isMobile, onClose }: SearchInputProps) => {
   };
 
   return (
-    <div className={`flex items-center justify-center ${!isMobile ? 'flex-1 max-w-[500px] mx-auto' : ''}`}>
+    <div
+      className={`flex items-center justify-center ${!isMobile ? "flex-1 max-w-[500px] mx-auto" : ""}`}
+    >
       <form className="relative w-full" onSubmit={handleSubmit}>
         <Input
           value={value}
