@@ -36,7 +36,7 @@ const Features = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl font-bold text-slate-900 mb-4"
+            className="lg:text-4xl text-2xl font-bold text-slate-900 mb-4"
           >
             Powerful Features for Modern Storage
           </motion.h2>

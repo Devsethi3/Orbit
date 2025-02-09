@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { useEditorStore } from "@/store/use-editor-store";
@@ -33,9 +34,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
-import { useMutation } from "convex/react";
-import { api } from "../../../../convex/_generated/api";
-import { useState } from "react";
 import { ShareDialog } from "@/components/ShareDialog";
 import { Doc } from "../../../../convex/_generated/dataModel";
 
