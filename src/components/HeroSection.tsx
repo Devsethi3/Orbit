@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import CanvasCursor from "./CanvasCursor";
 import { Button } from "./ui/button";
-import { FaGithub, FaRocket, FaBook, FaUsers } from "react-icons/fa";
+import { FaGithub, FaRocket, FaUsers } from "react-icons/fa";
 import { SiTypescript } from "react-icons/si";
 import { motion } from "framer-motion";
 
