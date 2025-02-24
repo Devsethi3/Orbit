@@ -46,7 +46,7 @@ const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
         router.push("/dashboard");
       }, 100);
     } catch (error) {
-      // Type guard to check if error is an object with a 
+      // Type guard to check if error is an object with
       if (error && typeof error === "object" && "message" in error) {
         const errorMessage = (error as { message: string }).message;
         if (errorMessage.includes("Document not found")) {
