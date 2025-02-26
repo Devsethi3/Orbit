@@ -46,7 +46,6 @@ const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
         router.push("/dashboard");
       }, 100);
     } catch (error) {
-      //  
       if (error && typeof error === "object" && "message" in error) {
         const errorMessage = (error as { message: string }).message;
         if (errorMessage.includes("Document not found")) {
