@@ -40,7 +40,6 @@ export const ShareDialog = ({
   const shareDocument = useMutation(api.documents.shareDocument);
   const createPublicLink = useMutation(api.documents.createPublicLink);
 
-  // 
   useEffect(() => {
     localStorage.setItem("emailInput", emailInput);
   }, [emailInput]);
