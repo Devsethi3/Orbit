@@ -44,7 +44,7 @@ export const ShareDialog = ({
     localStorage.setItem("emailInput", emailInput);
   }, [emailInput]);
 
-  // Save public link to localStorage whenever 
+  // Save public link to localStorage 
   useEffect(() => {
     if (publicLink) {
       localStorage.setItem(`publicLink-${documentId}`, publicLink);
