@@ -13,7 +13,7 @@ const HeroSection = () => {
     <div className="relative bg-gradient-to-b from-indigo-50 via-slate-50 to-white overflow-hidden">
       <CanvasCursor />
 
-      {/* Background decoration */}
+      {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-32 w-96 h-96 rounded-full bg-indigo-100 blur-3xl opacity-30"></div>
         <div className="absolute -bottom-40 -left-32 w-96 h-96 rounded-full bg-blue-100 blur-3xl opacity-30"></div>
