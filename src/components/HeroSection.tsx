@@ -30,7 +30,6 @@ const HeroSection = () => {
               Orbit Docs
             </motion.h1>
 
-            {/* */}
             <motion.div
               className="flex flex-col items-center gap-4 mb-10"
               initial={{ opacity: 0, y: 20 }}
