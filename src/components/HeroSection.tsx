@@ -87,7 +87,7 @@ const HeroSection = () => {
               </Link>
             </motion.div>
 
-            {/* Demo */}
+            {/* De */}
             <motion.div
               className="w-full max-w-5xl mb-20"
               initial={{ opacity: 0, y: 20 }}
