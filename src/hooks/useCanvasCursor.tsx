@@ -261,7 +261,7 @@ const useCanvasCursor = (): void => {
 
 export default useCanvasCursor;
 
-// Extend Canvas
+// Extend 
 declare global {
   interface CanvasRenderingContext2D {
     running: boolean;
