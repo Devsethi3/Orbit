@@ -17,7 +17,7 @@ const featuresList = [
   {
     icon: <FaBuilding className="w-6 h-6" />,
     title: 'Organization Tools',
-    description: 'Powerful workspace features for teams including roles, permissions, .',
+    description: 'Powerful workspace features for teams including roles, permissions',
   },
   {
     icon: <FaHistory className="w-6 h-6" />,
