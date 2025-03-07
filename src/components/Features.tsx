@@ -7,7 +7,7 @@ const featuresList = [
   {
     icon: <FaBolt className="w-6 h-6" />,
     title: 'Lightning Fast',
-    description: 'Experience real-time editing with zero lag, powered by our advanced synchronization engine.',
+    description: 'Experience real-time editing with zero lag, powered by our advanced synchronization.',
   },
   {
     icon: <FaUsers className="w-6 h-6" />,
