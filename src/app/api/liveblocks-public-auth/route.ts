@@ -6,7 +6,7 @@ const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET_KEY!,
 });
 
-// Generate a consistent color based on 
+// Generate a consistent color based 
 function generateUserColor(name: string): string {
   const nameToNumber = name
     .split("")
