@@ -15,7 +15,7 @@ function generateUserColor(name: string): string {
 }
 
 export async function POST(request: NextRequest) {
-  // Verify user authentication with Clerk
+  // Verify user authentication with
   const { sessionClaims } = await auth();
   if (!sessionClaims) {
     return new Response("Unauthorized", { status: 401 });
