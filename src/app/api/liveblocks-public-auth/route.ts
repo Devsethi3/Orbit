@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    // Get the room ID from the request
+    // Get the room ID from the
     const { room } = await request.json();
     if (!room) {
       return new Response("Room ID is required", { status: 400 });
