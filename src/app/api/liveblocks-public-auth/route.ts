@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
     const name =
       user.fullName ?? user.primaryEmailAddress?.emailAddress ?? "Anonymous";
 
-    // Create a session for public
+    // Create a session for
     const sessionId = `public-${Math.random().toString(36).slice(2)}`;
     const session = liveblocks.prepareSession(sessionId, {
     //   groupIds: [], // No groups for public access
