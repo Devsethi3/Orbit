@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     // Create a session for
     const sessionId = `public-${Math.random().toString(36).slice(2)}`;
     const session = liveblocks.prepareSession(sessionId, {
-    //   groupIds: [], // No groups for public access
+    //   groupIds: [], // No groups for public
       userInfo: {
         name,
         avatar: user.imageUrl,
