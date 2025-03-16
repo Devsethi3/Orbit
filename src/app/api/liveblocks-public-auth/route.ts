@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Add permission to access the 
+    // Add permission to access
     session.allow(room, session.FULL_ACCESS);
 
     // Authorize the session
