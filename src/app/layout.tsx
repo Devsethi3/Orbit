@@ -8,7 +8,11 @@ import "@liveblocks/react-tiptap/styles.css";
 import "@liveblocks/react-ui/styles.css";
 import "./globals.css";
 
-const font = Work_Sans();
+const font = Work_Sans({
+  subsets: ["latin"], 
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Orbit - Build Better Products with Developer Tools & Resources",
@@ -57,5 +61,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-// Create the better title and description according to app and modify the metadata for better seo

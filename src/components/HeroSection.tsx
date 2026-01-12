@@ -26,7 +26,7 @@ const HeroSection = () => {
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-xs font-medium text-slate-600">
-              Now with AI-powered writing assistance
+              Now share with email
             </span>
           </motion.div>
 
@@ -68,10 +68,7 @@ const HeroSection = () => {
                 <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
               </Button>
             </Link>
-            <Button
-              variant="outline"
-              size="lg"
-              >
+            <Button variant="outline" size="lg">
               <Play className="mr-2 w-4 h-4 text-slate-500 group-hover:text-slate-700 transition-colors" />
               Watch demo
             </Button>
@@ -85,16 +82,18 @@ const HeroSection = () => {
             className="relative mx-auto max-w-5xl"
           >
             {/* Browser Frame */}
-            <div className="rounded-xl sm:rounded-2xl bg-slate-900 p-1.5 sm:p-2 shadow-2xl shadow-slate-900/20">
+            <div className="rounded-xl sm:rounded-2xl bg-foreground/10 p-1.5 sm:p-2">
               {/* Browser Header */}
-              <div className="flex items-center gap-2 px-3 py-2 bg-slate-800/50 rounded-t-lg sm:rounded-t-xl">
+              <div className="flex items-center gap-2 px-3 py-2 bg-white rounded-t-lg sm:rounded-t-xl">
                 <div className="flex gap-1.5">
                   <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-400/80" />
                   <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-400/80" />
                   <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-400/80" />
                 </div>
                 <div className="flex-1 mx-4">
-                  <div className="max-w-xs mx-auto h-5 sm:h-6 bg-slate-700/50 rounded-md" />
+                  <div className="max-w-xs mx-auto h-5 sm:h-6 bg-foreground/5 rounded-md">
+                    <span className="text-sm">Orbit</span>
+                  </div>
                 </div>
               </div>
 
@@ -106,7 +105,7 @@ const HeroSection = () => {
                   loop
                   muted
                   playsInline
-                  poster="/placeholder-poster.jpg"
+                  poster="/placeholder-poster.png"
                 >
                   <source src="/demo-video.mp4" type="video/mp4" />
                 </video>
