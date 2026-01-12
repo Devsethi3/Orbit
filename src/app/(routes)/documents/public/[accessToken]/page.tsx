@@ -1,28 +1,23 @@
-import { preloadQuery } from "convex/nextjs";
-import { notFound } from "next/navigation";
-import { api } from "../../../../../../convex/_generated/api";
+import { Metadata } from "next";
 import { PublicDocument } from "./_components/public-document";
 
 interface PublicDocumentPageProps {
-  params: Promise<{
-    accessToken: string;
-  }>;
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+  params: Promise<{ accessToken: string }>;
 }
 
-const PublicDocumentPage = async ({ params }: PublicDocumentPageProps) => {
+export async function generateMetadata({
+  // params,
+}: PublicDocumentPageProps): Promise<Metadata> {
+  return {
+    title: "Shared Document",
+    description: "View shared document",
+  };
+}
+
+export default async function PublicDocumentPage({
+  params,
+}: PublicDocumentPageProps) {
   const { accessToken } = await params;
 
-  const preloadedDocument = await preloadQuery(
-    api.documents.getPublicDocument,
-    { accessToken }
-  );
-
-  if (!preloadedDocument) {
-    notFound();
-  }
-
-  return <PublicDocument preloadedDocument={preloadedDocument} />;
-};
-
-export default PublicDocumentPage;
+  return <PublicDocument accessToken={accessToken} />;
+}

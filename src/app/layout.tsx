@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Work_Sans } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { ConvexClientProvider } from "@/providers/convex-client-provider";
 import { Toaster } from "@/components/ui/sonner";
@@ -8,7 +8,7 @@ import "@liveblocks/react-tiptap/styles.css";
 import "@liveblocks/react-ui/styles.css";
 import "./globals.css";
 
-const font = Inter({ subsets: ["latin"] });
+const font = Work_Sans();
 
 export const metadata: Metadata = {
   title: "Orbit - Build Better Products with Developer Tools & Resources",

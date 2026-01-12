@@ -2,118 +2,129 @@
 
 import Link from "next/link";
 import React from "react";
-import CanvasCursor from "./CanvasCursor";
 import { Button } from "./ui/button";
-import { FaGithub, FaRocket, FaUsers } from "react-icons/fa";
-import { SiTypescript } from "react-icons/si";
+import { ArrowRight, Play } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <div className="relative bg-gradient-to-b from-indigo-50 via-slate-50 to-white overflow-hidden">
-      <CanvasCursor />
-
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-32 w-96 h-96 rounded-full bg-indigo-100 blur-3xl opacity-30"></div>
-        <div className="absolute -bottom-40 -left-32 w-96 h-96 rounded-full bg-blue-100 blur-3xl opacity-30"></div>
+    <section className="relative pt-28 pb-20 sm:pt-32 lg:pt-40 lg:pb-28 overflow-hidden">
+      {/* Subtle Background Gradient */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-50 rounded-full blur-3xl opacity-60" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-60" />
       </div>
 
-      <section className="relative pt-32 pb-0 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col items-center text-center">
-            <motion.h1
-              className="text-5xl lg:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-500"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              Orbit Docs
-            </motion.h1>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-4xl mx-auto">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full bg-slate-100 border border-slate-200/80"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-xs font-medium text-slate-600">
+              Now with AI-powered writing assistance
+            </span>
+          </motion.div>
 
-            <motion.div
-              className="flex flex-col items-center gap-4 mb-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <p className="xl:text-xl lg:text-lg text-slate-600 max-w-2xl">
-                Comprehensive documentation and guides for building amazing
-                products with Orbit. Get started with our resources and tools.
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-50 text-green-700">
-                  <FaRocket className="mr-2" />
-                  Zero Config
-                </span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-50 text-purple-700">
-                  <FaUsers className="mr-2" />
-                  Easy to Use
-                </span>
-                <a
-                  href="https://github.com/orbit/orbit"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-slate-50 text-slate-700 hover:bg-slate-100 transition-colors"
-                >
-                  <FaGithub className="mr-2" />
-                  GitHub
-                </a>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-50 text-orange-700">
-                  <SiTypescript className="mr-2" />
-                  TypeScript
-                </span>
-              </div>
-            </motion.div>
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-slate-900 tracking-tight leading-[1.1] mb-6"
+          >
+            Write, collaborate, and
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-500 to-blue-500">
+              ship docs faster
+            </span>
+          </motion.h1>
 
-            <motion.div
-              className="flex mb-10 flex-wrap items-center justify-center lg:gap-6 gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <Link href="/dashboard">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-indigo-600 to-blue-500 hover:from-indigo-700 hover:to-blue-600 text-white"
-                >
-                  Get Started
-                </Button>
-              </Link>
-              <Link href="https://github.com/DevSethi3" target="_blank" className="hidden md:block">
-                <Button variant="outline" size="lg">
-                  <FaGithub className="mr-2" />
-                  Who made this?
-                </Button>
-              </Link>
-            </motion.div>
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed"
+          >
+            The modern document editor built for teams. Real-time collaboration,
+            version history, and seamless publishing — all in one place.
+          </motion.p>
 
-            {/* */}
-            <motion.div
-              className="w-full max-w-5xl mb-20"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-            >
-              <div className="relative group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-                <div className="relative">
-                  <video
-                    className="w-full rounded-lg shadow-2xl"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  >
-                    <source src="/demo-video.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-16"
+          >
+            <Link href="/dashboard">
+              <Button size="lg">
+                Start for free
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+              </Button>
+            </Link>
+            <Button
+              variant="outline"
+              size="lg"
+              >
+              <Play className="mr-2 w-4 h-4 text-slate-500 group-hover:text-slate-700 transition-colors" />
+              Watch demo
+            </Button>
+          </motion.div>
+
+          {/* Preview Window */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="relative mx-auto max-w-5xl"
+          >
+            {/* Browser Frame */}
+            <div className="rounded-xl sm:rounded-2xl bg-slate-900 p-1.5 sm:p-2 shadow-2xl shadow-slate-900/20">
+              {/* Browser Header */}
+              <div className="flex items-center gap-2 px-3 py-2 bg-slate-800/50 rounded-t-lg sm:rounded-t-xl">
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-400/80" />
+                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-400/80" />
+                  <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-400/80" />
+                </div>
+                <div className="flex-1 mx-4">
+                  <div className="max-w-xs mx-auto h-5 sm:h-6 bg-slate-700/50 rounded-md" />
                 </div>
               </div>
-            </motion.div>
-          </div>
+
+              {/* Content Area */}
+              <div className="relative aspect-[16/10] bg-slate-100 rounded-b-lg sm:rounded-b-xl overflow-hidden">
+                <video
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  poster="/placeholder-poster.jpg"
+                >
+                  <source src="/demo-video.mp4" type="video/mp4" />
+                </video>
+
+                {/* Overlay for depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/5 to-transparent pointer-events-none" />
+              </div>
+            </div>
+
+            {/* Decorative blur elements */}
+            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
+              <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-200/50 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/50 rounded-full blur-3xl" />
+            </div>
+          </motion.div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

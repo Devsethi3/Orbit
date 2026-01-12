@@ -159,7 +159,7 @@ const Toolbar = ({ data }: ToolbarProps) => {
     ],
   ];
   return (
-    <div className="overflow-x-auto bg-[#f1f4f9] px-4 py-3 min-h-[40px] flex items-center gap-x-6 justify-between rounded-full">
+    <div className="overflow-x-auto bg-[#f1f4f9] px-4 py-3 min-h-[40px] flex items-center gap-x-6 justify-between rounded">
       <div className="flex items-center gap-x-3">
         {sections[0].map((item) => (
           <ToolbarButton key={item.label} {...item} />
@@ -193,6 +193,7 @@ const Toolbar = ({ data }: ToolbarProps) => {
         isOpen={showShareDialog}
         onClose={() => setShowShareDialog(false)}
         documentId={data._id}
+        documentTitle={data.title}
       />
     </div>
   );

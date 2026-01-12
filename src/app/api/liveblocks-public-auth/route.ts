@@ -1,59 +1,80 @@
-import { auth, currentUser } from "@clerk/nextjs/server";
-import { Liveblocks } from "@liveblocks/node";
 import { NextRequest } from "next/server";
+import { Liveblocks } from "@liveblocks/node";
+import { ConvexHttpClient } from "convex/browser";
+import { api } from "../../../../convex/_generated/api";
 
+const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET_KEY!,
 });
 
-function generateUserColor(name: string): string {
-  const nameToNumber = name
-    .split("")
-    .reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const hue = Math.abs(nameToNumber % 360);
-  return `hsl(${hue}, 80%, 60%)`;
-}
+export async function POST(req: NextRequest) {
+  try {
+    const { room, accessToken } = await req.json();
 
-export async function POST(request: NextRequest) {
-  const { sessionClaims } = await auth();
-  if (!sessionClaims) {
-    return new Response("Unauthorized", { status: 401 });
-  }
-
-  const user = await currentUser();
-  if (!user) {
-    return new Response("Unauthorized", { status: 401 });
-  }
-
-  try { 
-    const { room } = await request.json();
-    if (!room) {
-      return new Response("Room ID is required", { status: 400 });
+    if (!room || !accessToken) {
+      return new Response("Missing room or accessToken", { status: 400 });
     }
 
-    // Get user display name, fallback to email or "Anonymous"
-    const name =
-      user.fullName ?? user.primaryEmailAddress?.emailAddress ?? "Anonymous";
+    // Verify the public access token
+    const document = await convex.query(api.documents.getByPublicToken, {
+      accessToken,
+    });
 
-    // Create a session for
-    const sessionId = `public-${Math.random().toString(36).slice(2)}`;
-    const session = liveblocks.prepareSession(sessionId, {
-    //   groupIds: [],
+    if (!document) {
+      return new Response("Invalid or expired access token", { status: 403 });
+    }
+
+    // Verify room matches document
+    if (document._id !== room) {
+      return new Response("Room mismatch", { status: 403 });
+    }
+
+    // Generate anonymous user ID
+    const anonymousUserId = `anonymous_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+
+    // Generate random color for anonymous user
+    const colors = [
+      "#E57373",
+      "#F06292",
+      "#BA68C8",
+      "#9575CD",
+      "#7986CB",
+      "#64B5F6",
+      "#4FC3F7",
+      "#4DD0E1",
+      "#4DB6AC",
+      "#81C784",
+      "#AED581",
+      "#DCE775",
+      "#FFF176",
+      "#FFD54F",
+      "#FFB74D",
+      "#FF8A65",
+    ];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    // Create Liveblocks session for anonymous user
+    const session = liveblocks.prepareSession(anonymousUserId, {
       userInfo: {
-        name,
-        avatar: user.imageUrl,
-        color: generateUserColor(name),
+        name: "Anonymous Viewer",
+        avatar: "",
+        color,
       },
     });
 
-    //
-    session.allow(room, session.FULL_ACCESS);
+    // Grant access based on document's public access level
+    if (document.canEdit) {
+      session.allow(room, session.FULL_ACCESS);
+    } else {
+      session.allow(room, session.READ_ACCESS);
+    }
 
-    // Authorize the session
-    const { status, body } = await session.authorize();
+    const { body, status } = await session.authorize();
+
     return new Response(body, { status });
   } catch (error) {
-    console.error("Error in Liveblocks authentication:", error);
-    return new Response("Internal Server Error", { status: 500 });
+    console.error("Liveblocks public auth error:", error);
+    return new Response("Authentication failed", { status: 500 });
   }
 }
