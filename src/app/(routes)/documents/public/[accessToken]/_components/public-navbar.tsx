@@ -12,25 +12,24 @@ interface PublicNavbarProps {
   accessLevel: string;
 }
 
-export const PublicNavbar = ({
-  title,
-  canEdit,
-  // accessLevel,
-}: PublicNavbarProps) => {
+export const PublicNavbar = ({ title, canEdit }: PublicNavbarProps) => {
   return (
-    <nav className="flex items-center justify-between py-2">
-      <div className="flex gap-3 items-center">
-        <Link href="/">
-          <Image src="/logo.svg" width={40} height={40} alt="logo" />
+    <nav className="flex items-center justify-between px-3 py-2 border-b bg-background">
+      {/* Left */}
+      <div className="flex items-center gap-3 min-w-0">
+        <Link href="/" className="shrink-0">
+          <Image src="/logo.svg" width={36} height={36} alt="logo" />
         </Link>
-        <div className="flex flex-col">
-          <h1 className="text-lg font-semibold truncate max-w-[300px]">
+
+        <div className="flex flex-col min-w-0">
+          <h1 className="text-sm sm:text-base font-semibold truncate max-w-[140px] sm:max-w-[260px]">
             {title}
           </h1>
+
           <div className="flex items-center gap-2">
             <Badge
               variant={canEdit ? "default" : "secondary"}
-              className="text-xs"
+              className="text-[10px] sm:text-xs px-2 py-0.5"
             >
               {canEdit ? (
                 <>
@@ -44,18 +43,24 @@ export const PublicNavbar = ({
                 </>
               )}
             </Badge>
-            <span className="text-xs text-muted-foreground">
+
+            <span className="hidden sm:block text-xs text-muted-foreground">
               Shared document
             </span>
           </div>
         </div>
       </div>
 
-      <div className="flex items-center gap-3">
+      {/* Right */}
+      <div className="flex items-center gap-2 shrink-0">
         <Link href="/sign-in">
-          <Button variant="outline" size="sm">
-            <LogIn className="h-4 w-4 mr-2" />
-            Sign in for more features
+          <Button
+            variant="outline"
+            size="sm"
+            className="text-xs sm:text-sm px-2 sm:px-3"
+          >
+            <LogIn className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">Sign in for more features</span>
           </Button>
         </Link>
       </div>
