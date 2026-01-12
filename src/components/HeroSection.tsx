@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, GithubIcon, Play } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
@@ -24,9 +24,8 @@ const HeroSection = () => {
             transition={{ duration: 0.4 }}
             className="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full bg-slate-100 border border-slate-200/80"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-xs font-medium text-slate-600">
-              Now share with email
+              Real-time collaboration, simplified{" "}
             </span>
           </motion.div>
 
@@ -39,7 +38,7 @@ const HeroSection = () => {
           >
             Write, collaborate, and
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-500 to-blue-500">
+            <span className="text-primary">
               ship docs faster
             </span>
           </motion.h1>
@@ -69,8 +68,8 @@ const HeroSection = () => {
               </Button>
             </Link>
             <Button variant="outline" size="lg">
-              <Play className="mr-2 w-4 h-4 text-slate-500 group-hover:text-slate-700 transition-colors" />
-              Watch demo
+              <GithubIcon className="mr-2 w-4 h-4 text-slate-500 group-hover:text-slate-700 transition-colors" />
+              Github
             </Button>
           </motion.div>
 
