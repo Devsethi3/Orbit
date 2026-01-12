@@ -36,21 +36,27 @@ const Header = () => {
               afterSelectPersonalUrl="/dashboard"
               appearance={{
                 elements: {
-                  organizationSwitcherPopoverFooter: "hidden"
-                }
+                  organizationSwitcherPopoverFooter: "hidden",
+                },
               }}
             />
-            <UserButton appearance={{
-              elements: {
-                userButtonAvatarBox: "w-8 h-8",
-                userButtonPopoverFooter: "hidden"
-              }
-            }} afterSignOutUrl="/" />
+            <UserButton
+              appearance={{
+                elements: {
+                  userButtonAvatarBox: "w-8 h-8",
+                  userButtonPopoverFooter: "hidden",
+                },
+              }}
+              afterSignOutUrl="/"
+            />
           </div>
         </div>
 
-        <div className={`md:hidden overflow-hidden transition-all shadow-lg duration-300 ease-in-out ${showMobileSearch ? 'h-16' : 'h-0'
-          }`}>
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            showMobileSearch ? "h-16" : "h-0"
+          }`}
+        >
           <div className="p-2">
             <SearchInput isMobile onClose={() => setShowMobileSearch(false)} />
           </div>
