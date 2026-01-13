@@ -15,34 +15,35 @@ const font = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Orbit - Build Better Products with Developer Tools & Resources",
+  title: "Orbit | Real-Time Collaborative Documentation Platform",
   description:
-    "Access comprehensive documentation, interactive tutorials, and developer tools to build scalable products with Orbit's powerful platform. Get started with our extensive guides and resources.",
+    "Create, collaborate, and manage documentation in real time with Orbit. A modern workspace for teams to write, share, and organize knowledge with powerful developer-friendly tools.",
+
   keywords:
-    "Orbit platform, developer tools, documentation, product development, developer resources, technical guides",
+    "Orbit documentation platform, real-time collaboration, team workspace, collaborative editor, developer documentation, knowledge base, product documentation, live editing",
 
   openGraph: {
-    title: "Orbit - Build Better Products with Developer Tools & Resources",
+    title: "Orbit | Real-Time Collaborative Documentation Platform",
     description:
-      "Access comprehensive documentation, interactive tutorials, and developer tools to build scalable products with Orbit's powerful platform.",
+      "Create, collaborate, and manage documentation in real time with Orbit. A modern workspace for teams to write, share, and organize knowledge together.",
     type: "website",
     locale: "en_US",
     siteName: "Orbit",
     images: [
       {
-        url: "/og-image.png", // place image in public folder
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Orbit Developer Platform",
+        alt: "Orbit Real-Time Collaboration Workspace",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Orbit - Build Better Products with Developer Tools & Resources",
+    title: "Orbit - Real-Time Collaborative Documentation Platform",
     description:
-      "Access comprehensive documentation, interactive tutorials, and developer tools to build scalable products with Orbit's powerful platform.",
+      "A modern real-time collaborative workspace to write, share, and manage documentation with your team.",
     images: ["/og-image.png"],
   },
 
@@ -50,6 +51,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+
+  authors: [{ name: "Orbit Team" }],
+  category: "Productivity",
 };
 
 export default function RootLayout({
