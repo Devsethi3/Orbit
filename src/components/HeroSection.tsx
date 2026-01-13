@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { ArrowRight, GithubIcon, Play } from "lucide-react";
+import { ArrowRight, GithubIcon } from "lucide-react";
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
